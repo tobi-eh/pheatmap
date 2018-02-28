@@ -308,7 +308,7 @@ draw_annotations = function(converted_annotations, border_color, gaps, fontsize,
     return(res)
 }
 
-draw_annotation_names = function(annotations, fontsize, horizontal){
+draw_annotation_names = function(annotations, annotation_size, fontsize, horizontal){
     n = ncol(annotations)
     
     x = unit(3, "bigpts")
@@ -467,12 +467,12 @@ heatmap_motor = function(matrix, border_color, cellwidth, cellheight, tree_col, 
     if(!is.na2(annotation_col)){
         # Draw tracks
         converted_annotation = convert_annotations(annotation_col, annotation_colors)
-        elem = draw_annotations(converted_annotation, border_color, gaps_col, fontsize, horizontal = T)
+        elem = draw_annotations(converted_annotation, border_color, gaps_col, annotation_size, horizontal = T)
         res = gtable_add_grob(res, elem, t = 3, l = 3, clip = "off", name = "col_annotation")
         
         # Draw names
         if(annotation_names_col){
-            elem = draw_annotation_names(annotation_col, fontsize, horizontal = T)
+            elem = draw_annotation_names(annotation_col, annotation_size, fontsize, horizontal = T)
             res = gtable_add_grob(res, elem, t = 3, l = 4, clip = "off", name = "col_annotation_names")
         }
     }
@@ -481,12 +481,12 @@ heatmap_motor = function(matrix, border_color, cellwidth, cellheight, tree_col, 
     if(!is.na2(annotation_row)){
         # Draw tracks
         converted_annotation = convert_annotations(annotation_row, annotation_colors)
-        elem = draw_annotations(converted_annotation, border_color, gaps_row, fontsize, horizontal = F)
+        elem = draw_annotations(converted_annotation, border_color, gaps_row, annotation_size, horizontal = F)
         res = gtable_add_grob(res, elem, t = 4, l = 2, clip = "off", name = "row_annotation")
         
         # Draw names
         if(annotation_names_row){
-            elem = draw_annotation_names(annotation_row, fontsize, horizontal = F)
+            elem = draw_annotation_names(annotation_row, annotation_size, fontsize, horizontal = F)
             res = gtable_add_grob(res, elem, t = 5, l = 2, clip = "off", name = "row_annotation_names")
         }
     }
