@@ -313,7 +313,7 @@ draw_annotation_names = function(annotations, annotation_size, fontsize, horizon
     
     x = unit(3, "bigpts")
     
-    y = cumsum(rep(fontsize, n)) + cumsum(rep(2, n)) - fontsize / 2 + 1 
+    y = cumsum(rep(annotation_size, n)) + cumsum(rep(2, n)) - annotation_size / 2 + 1 
     y = unit(y, "bigpts")
     
     if(horizontal){
